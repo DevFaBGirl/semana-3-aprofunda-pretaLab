@@ -24,7 +24,7 @@ DELETE:
 
 # Testes realizados no Insomnia: 🧪
 
-EDIÇÃO DE POSTAGEM ESPECÍFICA
+EDIÇÃO DE POSTAGEM ESPECÍFICA PELO ID
 
 
 ![listTexts](https://github.com/user-attachments/assets/cf158c65-549f-4645-b2d1-8cf571a4be95)
@@ -39,8 +39,9 @@ Print texto (ID) editado
 Verificação de edição
 
 
-EXCLUIR UMA POSTAGEM
-⚠️ (testes a concluir) ⚠️
+EXCLUIR UMA POSTAGEM PELO ID
+![image](https://github.com/user-attachments/assets/102de037-51f6-403f-b68d-f92de4bb4b93)
+
 
 
 # O que Estudei Esta Semana:
