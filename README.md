@@ -8,7 +8,7 @@ PATCH/PUT:
 - Permite a edição de uma postagem específica;
 - Utiliza o método HTTP PATCH ou PUT para atualizar o conteúdo de um post.
 
-# DELETE:
+DELETE:
 - Permite excluir uma postagem específica;
 - Utiliza o método HTTP DELETE para remover o post do banco de dados.
 
