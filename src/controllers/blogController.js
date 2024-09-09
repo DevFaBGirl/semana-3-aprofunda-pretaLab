@@ -1,18 +1,22 @@
 const TextService = require('../services/textServices');
 
+/*----------> CRIAR UM TEXTO <----------*/
 const createPost = (req, res) => {
-  const { title, content, status, author } = req.body
-  const newText = TextService.createText({ title, content, status, author})
-  res.status(201).json({ message: `Texto ${newText.title} criado com sucesso` })
-}
+    const { title, content, status, author } = req.body;
+  const newText = TextService.createText({ title, content, status, author });
+  res.status(201).json({ message: `Texto ${newText.title} criado com sucesso` });
+};
 
+
+/*----------> BUSCAR LISTA DE TEXTO COMPLETA <----------*/
 const listPosts = (req, res) => {
   const texts = TextService.getAllTexts()
   res.json(texts)
 }
 
+/*----------> BUSCAR TEXTO EXPECÍFICO PELO ID <----------*/
 const listPost = (req, res) => {
-  const { id } = req.query
+  const { id } = req.params
 
   const text = TextService.getTextById(id)
 
@@ -23,35 +27,31 @@ const listPost = (req, res) => {
   res.json(text)
 }
 
-const editPost = (req, res) => {
-  const { id } = req.params;
-  const { title, content, status, author } = req.body;
-
-  const updatedText = TextService.updateText(id, { title, content, status, author });
+/*----------> EDITAR PELO ID <----------*/
+const updatePost = (req, res) => {
+  const {id} = req.params
+  const updatedText = TextService.updateText(id, req.body)
 
   if (!updatedText) {
-    return res.status(404).json({ message: `Texto com ID ${id} não encontrado` });
+    return res.status(404).json({ message: `Texto com ${id} não encontrado`})
   }
 
-  res.json({ message: `Texto com ID ${id} atualizado com sucesso`, updatedText });
-};
+  res.json({ message: `Texto com ${id} editado com sucesso`})
+}
 
+/*----------> APAGAR PELO ID <----------*/
 const deletePost = (req, res) => {
-  const {id} = req.params;
+  const { id } = req.params
+  const filteredList = TextService.deleteTextById(id)
 
-  const deleted = TextService.deleteText(id);
+  res.json({ message: `Texto com ${id} excluído com sucesso`, filteredList })
 
-  if (!deleted) {
-    return res.status(404).json({ message: `Texto com ID ${id} não encontrado` });
-  }
-
-  res.json({ message: `Texto com ID ${id} excluído com sucesso` });
-};
+}
 
 module.exports = {
   createPost,
   listPosts,
   listPost,
-  editPost,
-  deletePost,
+  updatePost,
+  deletePost
 }
